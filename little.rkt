@@ -23,3 +23,15 @@
       (else (cons
               (car (car lists))
               (firsts (cdr lists)))))))
+
+; insert atom to right of other atom
+(define insertR
+  (lambda (new existing lat)
+    (cond
+      ((null? lat) '())
+      (else
+        (cond
+          ((eq? (car lat) existing)
+           (cons existing (cons new (cdr lat))))
+          (else
+            (cons (car lat) (insertR new existing (cdr lat)))))))))
