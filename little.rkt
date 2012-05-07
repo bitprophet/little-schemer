@@ -14,3 +14,12 @@
       ((null? lat) '())
       ((eq? (car lat) a) (cdr lat))
       (else (cons (car lat) (rember a (cdr lat)))))))
+
+; first item of each list
+(define firsts
+  (lambda (lists)
+    (cond
+      ((null? lists) '())
+      (else (cons
+              (car (car lists))
+              (firsts (cdr lists)))))))
