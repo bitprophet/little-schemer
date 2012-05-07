@@ -35,3 +35,15 @@
            (cons existing (cons new (cdr lat))))
           (else
             (cons (car lat) (insertR new existing (cdr lat)))))))))
+
+; insert atom to LEFT of other atom!
+(define insertL
+  (lambda (new existing lat)
+    (cond
+      ((null? lat) '())
+      (else
+        (cond
+          ((eq? (car lat) existing)
+           (cons new lat))
+          (else
+            (cons (car lat) (insertL new existing (cdr lat)))))))))
