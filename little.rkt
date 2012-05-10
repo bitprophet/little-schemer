@@ -111,3 +111,9 @@
   (cond
     ((zero? b) a)
     (else (sub (sub1 a) (sub1 b)))))
+
+; add up all numbers in a tuple
+(define (addtup tup)
+  (cond
+    ((null? tup) 0)
+    (else (add (car tup) (addtup (cdr tup))))))
