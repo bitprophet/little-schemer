@@ -117,3 +117,9 @@
   (cond
     ((null? tup) 0)
     (else (add (car tup) (addtup (cdr tup))))))
+
+; multiplication
+(define (mult a b)
+  (cond
+    ((zero? b) 0)
+    (else (add a (mult a (sub1 b))))))
