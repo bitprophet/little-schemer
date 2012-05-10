@@ -196,3 +196,10 @@
       (cond
         ((number? (car lat)) (cons (car lat) (allnums (cdr lat))))
         (else (allnums (cdr lat)))))))
+
+; type-friendly equality
+(define (eqan? a b)
+  (cond
+    ((and (number? a) (number? b)) (= a b))
+    ((or (number? a) (number? b)) #f)
+    (else (eq? a b))))
