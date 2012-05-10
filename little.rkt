@@ -78,3 +78,14 @@
          (cons existing (cons new (multiinsertR new existing (cdr lat)))))
         (else
           (cons (car lat) (multiinsertR new existing (cdr lat))))))))
+
+; insert to left of all matching members
+(define (multiinsertL new existing lat)
+  (cond
+    ((null? lat) '())
+    (else
+      (cond
+        ((eq? (car lat) existing)
+         (cons new (cons existing (multiinsertL new existing (cdr lat)))))
+        (else
+          (cons (car lat) (multiinsertL new existing (cdr lat))))))))
