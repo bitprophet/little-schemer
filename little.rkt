@@ -160,3 +160,9 @@
     ((zero? m) 1)
     ((eq m 1) n)
     (else (mult n (pwr n (sub1 m))))))
+
+; Length of a lat ("length" a racket builtin, using "len")
+(define (len lat)
+  (cond
+    ((null? lat) 0)
+    (else (add1 (len (cdr lat))))))
