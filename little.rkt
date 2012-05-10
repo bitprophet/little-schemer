@@ -146,3 +146,10 @@
     ((zero? m) #f)
     ((zero? n) #t)
     (else (lt (sub1 n) (sub1 m)))))
+
+; equal
+(define (eq n m)
+  (cond
+    ((and (zero? n) (zero? m)) #t)
+    ((or (zero? n) (zero? m)) #f)
+    (else (eq (sub1 n) (sub1 m)))))
