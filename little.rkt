@@ -172,3 +172,9 @@
   (cond
     ((eq? 1 n) (car lat))
     (else (pick (sub1 n) (cdr lat)))))
+
+; Remove Nth item
+(define (rempick n lat)
+  (cond
+    ((eq? 1 n) (cdr lat))
+    (else (cons (car lat) (rempick (sub1 n) (cdr lat))))))
