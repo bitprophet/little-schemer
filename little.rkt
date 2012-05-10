@@ -166,3 +166,9 @@
   (cond
     ((null? lat) 0)
     (else (add1 (len (cdr lat))))))
+
+; Pick Nth item from a lat
+(define (pick n lat)
+  (cond
+    ((eq? 1 n) (car lat))
+    (else (pick (sub1 n) (cdr lat)))))
