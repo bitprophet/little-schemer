@@ -50,3 +50,13 @@
     (else (cond
       ((eq? (car lat) old) (cons new (cdr lat)))
       (else (cons (car lat) (subst new old (cdr lat))))))))
+
+; substitute one atom for 1st occurrence of one or two others
+(define (subst2 new old1 old2 lat)
+  (cond
+    ((null? lat) '())
+    (else
+      (cond
+        ((or (eq? (car lat) old1) (eq? (car lat) old2))
+         (cons new (cdr lat)))
+        (else (cons (car lat) (subst2 new old1 old2 (cdr lat))))))))
