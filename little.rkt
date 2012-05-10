@@ -153,3 +153,10 @@
     ((zero? m) (zero? n))
     ((zero? n) #f)
     (else (eq (sub1 n) (sub1 m)))))
+
+; raising to power
+(define (pwr n m)
+  (cond
+    ((zero? m) 1)
+    ((eq m 1) n)
+    (else (mult n (pwr n (sub1 m))))))
