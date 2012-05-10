@@ -123,3 +123,11 @@
   (cond
     ((zero? b) 0)
     (else (add a (mult a (sub1 b))))))
+
+; zip-add two tuples
+(define (tupadd tup1 tup2)
+  (cond
+    ((and (null? tup1) (null? tup2)) '())
+    (else (cons
+            (add (car tup1) (car tup2))
+            (tupadd (cdr tup1) (cdr tup2))))))
