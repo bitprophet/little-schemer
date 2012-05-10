@@ -99,3 +99,9 @@
         ((eq? (car lat) old) (cons new (multisubst new old (cdr lat))))
         (else
           (cons (car lat) (multisubst new old (cdr lat))))))))
+
+; addition
+(define (add a b)
+  (cond
+    ((zero? b) a)
+    (else (add (add1 a) (sub1 b)))))
