@@ -105,3 +105,9 @@
   (cond
     ((zero? b) a)
     (else (add (add1 a) (sub1 b)))))
+
+; subtraction
+(define (sub a b)
+  (cond
+    ((zero? b) a)
+    (else (sub (sub1 a) (sub1 b)))))
