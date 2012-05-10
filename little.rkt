@@ -67,3 +67,14 @@
     ((null? lat) '())
     ((eq? (car lat) a) (multirember a (cdr lat)))
     (else (cons (car lat) (multirember a (cdr lat))))))
+
+; insert to right of all matching members
+(define (multiinsertR new existing lat)
+  (cond
+    ((null? lat) '())
+    (else
+      (cond
+        ((eq? (car lat) existing)
+         (cons existing (cons new (multiinsertR new existing (cdr lat)))))
+        (else
+          (cons (car lat) (multiinsertR new existing (cdr lat))))))))
