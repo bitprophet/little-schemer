@@ -89,3 +89,13 @@
          (cons new (cons existing (multiinsertL new existing (cdr lat)))))
         (else
           (cons (car lat) (multiinsertL new existing (cdr lat))))))))
+
+; substitute all matching members
+(define (multisubst new old lat)
+  (cond
+    ((null? lat) '())
+    (else
+      (cond
+        ((eq? (car lat) old) (cons new (multisubst new old (cdr lat))))
+        (else
+          (cons (car lat) (multisubst new old (cdr lat))))))))
