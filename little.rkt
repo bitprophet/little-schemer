@@ -132,3 +132,17 @@
     (else (cons
             (add (car tup1) (car tup2))
             (tupadd (cdr tup1) (cdr tup2))))))
+
+; greater-than test
+(define (gt n m)
+  (cond
+    ((zero? n) #f)
+    ((zero? m) #t)
+    (else (gt (sub1 n) (sub1 m)))))
+
+; less-than
+(define (lt n m)
+  (cond
+    ((zero? m) #f)
+    ((zero? n) #t)
+    (else (lt (sub1 n) (sub1 m)))))
