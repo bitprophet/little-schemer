@@ -60,3 +60,10 @@
         ((or (eq? (car lat) old1) (eq? (car lat) old2))
          (cons new (cdr lat)))
         (else (cons (car lat) (subst2 new old1 old2 (cdr lat))))))))
+
+; remove all matching members
+(define (multirember a lat)
+  (cond
+    ((null? lat) '())
+    ((eq? (car lat) a) (multirember a (cdr lat)))
+    (else (cons (car lat) (multirember a (cdr lat))))))
