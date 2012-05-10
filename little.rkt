@@ -178,3 +178,21 @@
   (cond
     ((eq? 1 n) (cdr lat))
     (else (cons (car lat) (rempick (sub1 n) (cdr lat))))))
+
+; Remove all numbers
+(define (nonums lat)
+  (cond
+    ((null? lat) '())
+    (else
+      (cond
+        ((number? (car lat)) (nonums (cdr lat)))
+        (else (cons (car lat) (nonums (cdr lat))))))))
+
+; Remove all non-numbers
+(define (allnums lat)
+  (cond
+    ((null? lat) '())
+    (else
+      (cond
+        ((number? (car lat)) (cons (car lat) (allnums (cdr lat))))
+        (else (allnums (cdr lat)))))))
