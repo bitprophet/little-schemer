@@ -150,6 +150,6 @@
 ; equal
 (define (eq n m)
   (cond
-    ((and (zero? n) (zero? m)) #t)
-    ((or (zero? n) (zero? m)) #f)
+    ((zero? m) (zero? n))
+    ((zero? n) #f)
     (else (eq (sub1 n) (sub1 m)))))
