@@ -203,3 +203,12 @@
     ((and (number? a) (number? b)) (= a b))
     ((or (number? a) (number? b)) #f)
     (else (eq? a b))))
+
+; counting an atom in a lat
+(define (occur a lat)
+  (cond
+    ((null? lat) 0)
+    (else
+      (cond
+        ((eqan? (car lat) a) (add1 (occur a (cdr lat))))
+        (else (occur a (cdr lat)))))))
