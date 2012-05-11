@@ -212,3 +212,13 @@
       (cond
         ((eqan? (car lat) a) (add1 (occur a (cdr lat))))
         (else (occur a (cdr lat)))))))
+
+; recursive removal
+(define (rember* a l)
+  (cond
+    ((null? l) '())
+    ((list? (car l)) (cons (rember* a (car l)) (rember* a (cdr l))))
+    (else
+      (cond
+        ((eqan? (car l) a) (rember* a (cdr l)))
+        (else (cons (car l) (rember* a (cdr l))))))))
