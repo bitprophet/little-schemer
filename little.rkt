@@ -222,3 +222,15 @@
       (cond
         ((eqan? (car l) a) (rember* a (cdr l)))
         (else (cons (car l) (rember* a (cdr l))))))))
+
+; recursive right insertion
+(define (insertR* new existing l)
+  (cond
+    ((null? l) '())
+    ((list? (car l))
+     (cons (insertR* new existing (car l)) (insertR* new existing (cdr l))))
+    (else
+      (cond
+        ((eq? (car l) existing)
+         (cons existing (cons new (insertR* new existing (cdr l)))))
+        (else (cons (car l) (insertR* new existing (cdr l))))))))
