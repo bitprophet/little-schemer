@@ -270,3 +270,13 @@
     (else (cons
             (insertL* new existing (car l))
             (insertL* new existing (cdr l))))))
+
+; recursive member test
+(define (member* a l)
+  (cond
+    ((null? l) #f)
+    ((atom? (car l))
+     (cond
+       ((eqan? (car l) a) #t)
+       (else (member* a (cdr l)))))
+    (else (or (member* a (car l)) (member* a (cdr l))))))
