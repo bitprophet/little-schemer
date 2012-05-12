@@ -245,3 +245,15 @@
        (else (occur* a (cdr l)))))
     (else
       (add (occur* a (car l)) (occur* a (cdr l))))))
+
+; recursive subst
+(define (subst* new old l)
+  (cond
+    ((null? l) '())
+    ((atom? (car l))
+     (cond
+       ((eqan? (car l) old) (cons new (subst* new old (cdr l))))
+       (else (cons (car l) (subst* new old (cdr l))))))
+    (else (cons
+            (subst* new old (car l))
+            (subst* new old (cdr l))))))
