@@ -257,3 +257,16 @@
     (else (cons
             (subst* new old (car l))
             (subst* new old (cdr l))))))
+
+; recursive left-insert
+(define (insertL* new existing l)
+  (cond
+    ((null? l) '())
+    ((atom? (car l))
+     (cond
+       ((eqan? (car l) existing)
+        (cons new (cons existing (insertL* new existing (cdr l)))))
+       (else (cons (car l) (insertL* new existing (cdr l))))))
+    (else (cons
+            (insertL* new existing (car l))
+            (insertL* new existing (cdr l))))))
