@@ -286,3 +286,25 @@
   (cond
     ((atom? (car l)) (car l))
     (else (leftmost (car l)))))
+
+; Compare lists
+(define (eqlist? l1 l2)
+  (cond
+    ; two nil lists are equal
+    ((and (null? l1) (null? l2)) #t)
+    ; no both nil, so then OR means one is nil, ergo definitely not equal
+    ((or (null? l1) (null? l2)) #f)
+    ; both cars are atoms?
+    ((and (atom? (car l1)) (atom? (car l2)))
+     (cond
+      ; eqan? recurse onto cdrs
+      ((eqan? (car l1) (car l2)) (and (eqlist? (cdr l1) (cdr l2))))
+      ; not equan? #f
+      (else #f)))
+    ; only one is an atom? #f
+    ((or (atom? (car l1)) (atom? (car l2))) #f)
+    ; both cars are lists? recurse onto both
+    ((and (list? (car l1)) (list? (car l2)))
+     (and (eqlist? (car l1) (car l2)) (eqlist? (cdr l1) (cdr l2))))
+    ; only one is a list? #f
+    (else #f)))
