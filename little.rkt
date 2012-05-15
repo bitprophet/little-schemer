@@ -280,3 +280,9 @@
        ((eqan? (car l) a) #t)
        (else (member* a (cdr l)))))
     (else (or (member* a (car l)) (member* a (cdr l))))))
+
+; Find leftmost atom in a nested list
+(define (leftmost l)
+  (cond
+    ((atom? (car l)) (car l))
+    (else (leftmost (car l)))))
