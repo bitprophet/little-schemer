@@ -308,3 +308,11 @@
      (and (eqlist? (car l1) (car l2)) (eqlist? (cdr l1) (cdr l2))))
     ; only one is a list? #f
     (else #f)))
+
+; Compare S-expressions
+(define (myequal? s1 s2)
+  (cond
+    ((and (atom? s1) (atom? s2)) (eqan? s1 s2))
+    ((or (atom? s1) (atom? s2)) #f)
+    ; At this point atoms and nulls are ruled out; must be two lists
+    (else (eqlist? s1 s2))))
