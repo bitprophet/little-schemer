@@ -316,3 +316,13 @@
     ((or (atom? s1) (atom? s2)) #f)
     ; At this point atoms and nulls are ruled out; must be two lists
     (else (eqlist? s1 s2))))
+
+; eqlist using myequal
+(define (eqlist2? l1 l2)
+  (cond
+    ; two nil lists are equal
+    ((and (null? l1) (null? l2)) #t)
+    ; no both nil, so then OR means one is nil, ergo definitely not equal
+    ((or (null? l1) (null? l2)) #f)
+    ; equality test on cars & cdrs
+    (else (and (myequal? (car l1) (car l2)) (eqlist2? (cdr l1) (cdr l2))))))
