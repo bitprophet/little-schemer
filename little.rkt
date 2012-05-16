@@ -360,3 +360,9 @@
     ((and (null? lat1) (null? lat2)) #t)
     ((null? lat1) #t)
     (else (and (member? (car lat1) lat2) (mysubset? (cdr lat1) (cdr lat2))))))
+
+; intersection test
+(define (intersect? lat1 lat2)
+  (cond
+    ((or (null? lat1) (null? lat2)) #f)
+    (else (or (member? (car lat1) lat2) (intersect? (cdr lat1) (cdr lat2))))))
