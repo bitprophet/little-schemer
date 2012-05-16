@@ -347,3 +347,9 @@
     ((null? lat) '())
     ((member? (car lat) (cdr lat)) (makeset (cdr lat)))
     (else (cons (car lat) (makeset (cdr lat))))))
+
+; set enforcement using multirember
+(define (makeset2 lat)
+  (cond
+    ((null? lat) '())
+    (else (cons (car lat) (makeset (multirember (car lat) (cdr lat)))))))
