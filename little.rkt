@@ -353,3 +353,10 @@
   (cond
     ((null? lat) '())
     (else (cons (car lat) (makeset (multirember (car lat) (cdr lat)))))))
+
+; subset test
+(define (mysubset? lat1 lat2)
+  (cond
+    ((and (null? lat1) (null? lat2)) #t)
+    ((null? lat1) #t)
+    (else (and (member? (car lat1) lat2) (mysubset? (cdr lat1) (cdr lat2))))))
