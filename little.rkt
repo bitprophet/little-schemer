@@ -365,4 +365,11 @@
 (define (intersect? lat1 lat2)
   (cond
     ((or (null? lat1) (null? lat2)) #f)
-    (else (or (member? (car lat1) lat2) (intersect? (cdr lat1) (cdr lat2))))))
+    (else (or (member? (car lat1) lat2) (intersect? (cdr lat1) lat2)))))
+
+; return intersection
+(define (intersect lat1 lat2)
+  (cond
+    ((or (null? lat1) (null? lat2)) '())
+    ((member? (car lat1) lat2) (cons (car lat1) (intersect (cdr lat1) lat2)))
+    (else (intersect (cdr lat1) lat2))))
