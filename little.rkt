@@ -326,3 +326,17 @@
     ((or (null? l1) (null? l2)) #f)
     ; equality test on cars & cdrs
     (else (and (myequal? (car l1) (car l2)) (eqlist2? (cdr l1) (cdr l2))))))
+
+; member?
+(define (member? a lat)
+  (cond
+    ((null? lat) #f)
+    ((eqan? (car lat) a) #t)
+    (else (member? a (cdr lat)))))
+
+; set test
+(define (set? lat)
+  (cond
+    ((null? lat) #t)
+    ((member? (car lat) (cdr lat)) #f)
+    (else (myset? (cdr lat)))))
