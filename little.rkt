@@ -335,8 +335,15 @@
     (else (member? a (cdr lat)))))
 
 ; set test
-(define (set? lat)
+(define (myset? lat)
   (cond
     ((null? lat) #t)
     ((member? (car lat) (cdr lat)) #f)
     (else (myset? (cdr lat)))))
+
+; set enforcement
+(define (makeset lat)
+  (cond
+    ((null? lat) '())
+    ((member? (car lat) (cdr lat)) (makeset (cdr lat)))
+    (else (cons (car lat) (makeset (cdr lat))))))
