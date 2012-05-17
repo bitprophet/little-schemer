@@ -2,6 +2,9 @@
 (require readline)
 (require readline/rep-start)
 
+; LOL
+(define (ld) (load "little.rkt"))
+
 ; atom?
 (define (atom? a)
   (not (list? a)))
