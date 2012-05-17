@@ -405,3 +405,9 @@
 ; is the relation a function (a list of mappings of inputs to outputs, such
 ; that the same input always results in the same output.)
 (define (fun? rel) (myset? (firsts rel)))
+
+; reverse relation
+(define (revrel rel)
+  (cond
+    ((null? rel) '())
+    (else (cons (build (second (car rel)) (first (car rel))) (revrel (cdr rel))))))
