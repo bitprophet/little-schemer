@@ -398,3 +398,6 @@
     ((null? p) #f)
     ((null? (cdr p)) #f)
     (else (null? (cdr (cdr p))))))
+
+; build (first, second are already in Racket)
+(define (build a b) (cons a (cons b '())))
