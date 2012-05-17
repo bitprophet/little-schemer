@@ -373,3 +373,11 @@
     ((or (null? lat1) (null? lat2)) '())
     ((member? (car lat1) lat2) (cons (car lat1) (intersect (cdr lat1) lat2)))
     (else (intersect (cdr lat1) lat2))))
+
+; union
+(define (union lat1 lat2)
+  (cond
+    ((null? lat1) lat2)
+    ((null? lat2) lat1)
+    ((member? (car lat1) lat2) (union (cdr lat1) lat2))
+    (else (cons (car lat1) (union (cdr lat1) lat2)))))
