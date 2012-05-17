@@ -401,3 +401,7 @@
 
 ; build (first, second are already in Racket)
 (define (build a b) (cons a (cons b '())))
+
+; is the relation a function (a list of mappings of inputs to outputs, such
+; that the same input always results in the same output.)
+(define (fun? rel) (myset? (firsts rel)))
