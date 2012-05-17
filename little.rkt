@@ -381,3 +381,11 @@
     ((null? lat2) lat1)
     ((member? (car lat1) lat2) (union (cdr lat1) lat2))
     (else (cons (car lat1) (union (cdr lat1) lat2)))))
+
+; return intersection of all sublists
+(define (intersectall l-set)
+  (cond
+    ((null? (cdr l-set)) (car l-set))
+    (else (intersectall (cons 
+                          (intersect (car l-set) (car (cdr l-set)))
+                          (cdr (cdr l-set)))))))
