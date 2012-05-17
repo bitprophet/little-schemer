@@ -386,6 +386,4 @@
 (define (intersectall l-set)
   (cond
     ((null? (cdr l-set)) (car l-set))
-    (else (intersectall (cons 
-                          (intersect (car l-set) (car (cdr l-set)))
-                          (cdr (cdr l-set)))))))
+    (else (intersect (car l-set) (intersectall (cdr l-set))))))
