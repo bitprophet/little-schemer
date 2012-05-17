@@ -390,3 +390,11 @@
   (cond
     ((null? (cdr l-set)) (car l-set))
     (else (intersect (car l-set) (intersectall (cdr l-set))))))
+
+; a list of only two items
+(define (a-pair? p)
+  (cond
+    ((atom? p) #f)
+    ((null? p) #f)
+    ((null? (cdr p)) #f)
+    (else (null? (cdr (cdr p))))))
