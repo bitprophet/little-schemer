@@ -411,3 +411,9 @@
   (cond
     ((null? rel) '())
     (else (cons (build (second (car rel)) (first (car rel))) (revrel (cdr rel))))))
+
+; full function (no answer is the same)
+(define (fullfun? fun)
+  (cond
+    ((null? fun) #f)
+    (else (myset? (firsts (revrel fun))))))
